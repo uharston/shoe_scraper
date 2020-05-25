@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
 # Specify your gem's dependencies in fresh_start.gemspec
-gemspec
+# gemspec
 
 gem "rake", "~> 12.0"
