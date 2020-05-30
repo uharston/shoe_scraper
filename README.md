@@ -42,3 +42,27 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the FreshStart project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/fresh_start/blob/master/CODE_OF_CONDUCT.md).
+
+
+
+
+
+How this App Works 
+
+1. / ruby bin/run / Welcome message to the User. X
+"Welcome to the Sneaky Sneaker Finder! Are you ready to find your next pair of kicks?" X
+2. Allow the user to enter Y/N X
+3. Display a list of brands X
+4. Ask them what shoe they are looking for.X
+"What kind of kicks are you looking for today?"X
+5. Allow them to input based on index. X
+6. Display a list of the shoes and their prices X
+7. Ask user if they want to know more about a particular shoe by index. X
+"Let me know if you want to get to know more information about a certain shoe."X
+
+8. Display sizes as a long string with commas, not as an array X 
+9. Make Air Jordan Selection work X
+10. Prevent John Mark from displaying as a shoe brand 
+11. Year is not always available. Sometimes ProductId is put the Years place. 
+12. Be able to save selections and display them later
+13. Make some back buttons within the program 

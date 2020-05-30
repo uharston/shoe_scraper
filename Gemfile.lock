@@ -1,12 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.2)
+    colorize (0.8.1)
+    method_source (1.0.0)
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.0)
+      mini_portile2 (~> 2.4.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     rake (12.3.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  colorize
+  nokogiri (= 1.10)
+  pry
   rake (~> 12.0)
 
 BUNDLED WITH
