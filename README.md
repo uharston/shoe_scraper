@@ -62,7 +62,14 @@ How this App Works
 
 8. Display sizes as a long string with commas, not as an array X 
 9. Make Air Jordan Selection work X
-10. Prevent John Mark from displaying as a shoe brand 
-11. Year is not always available. Sometimes ProductId is put the Years place. 
-12. Be able to save selections and display them later
-13. Make some back buttons within the program 
+10. Prevent John Mark from displaying as a shoe brand X
+11. Year is not always available. Sometimes ProductId is put the Years place. X
+12. Be able to save selections and display them later X
+13. Make some back buttons within the program X
+14. Put invalid option message for letters when input should be a number or a 'b' for back 
+
+15. Be able to scrape all the index pages
+16. Be able to look up brands by size
+16. Add color X
+17. Standardize the puts statements X
+18. Learn how to make graphics with the logos and shoes
