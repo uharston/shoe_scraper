@@ -10,12 +10,11 @@ class CommandLineInterface
 
   def first_selection 
     puts ''
-    puts "Welcome to the Sneaky Sneaker Finder! Are you ready to find your next pair of kicks?".colorize(:green)
+    puts "Welcome to The Sneaker Finder! Are you ready to find your next pair of kicks?".colorize(:green)
     puts ''
-    puts "Type 'y' or any other key to exit"
+    puts "Type yes or any other key to exit"
     
       input = gets.chomp.downcase
-      binding.pry 
       if input == 'y'
         # Saved_shoes.new 
         puts ''
@@ -43,7 +42,13 @@ class CommandLineInterface
     def select_brand #SELECT BRAND - FIND BRAND
       puts "Enter a number..."
       input = gets.chomp
-      # if input.to_i == 0 or use if input.to_i.between?(1, array.size)
+      
+      if !input.to_i.between?(1, Brands.all.size)
+        puts ""
+        puts "That is not a valid option."
+        puts ""
+        select_brand
+      else 
       href = Brands.all[input.to_i - 1].brand_href 
       if input == '1'
         if Brands.all[input.to_i - 1].editions == nil
@@ -56,6 +61,7 @@ class CommandLineInterface
       else
         display_shoe_collection(Brands.all[input.to_i - 1].shoe_collection)
       end 
+    end 
     end
     
     #---------------------------------------------------------------------------
@@ -70,7 +76,7 @@ class CommandLineInterface
     def display_shoe_collection(brand)
       puts ''
       brand.each.with_index(1) do |shoe_obj, index|
-        puts "#{index}. Model: #{shoe_obj.shoe_name.colorize(:light_cyan)} Price: #{shoe_obj.price.colorize(:light_cyan)}"
+        puts "#{index}. Model: #{shoe_obj.shoe_name.colorize(:light_cyan)}" + " Price: #{shoe_obj.price.colorize(:light_cyan)}".gsub("+", " ")
         puts ""
       end
       select_shoe_collection
@@ -142,7 +148,8 @@ class CommandLineInterface
       puts "Colorway: #{Shoes.all[input.to_i - 1].colorway.colorize(:light_cyan)}"
       puts "Condition: #{Shoes.all[input.to_i - 1].condition.colorize(:light_cyan)}"
       puts "Year: #{Shoes.all[input.to_i - 1].year.colorize(:light_cyan)}"
-      puts "Price: #{Shoes.all[input.to_i - 1].price.colorize(:light_cyan)}"
+      puts "Price: #{Shoes.all[input.to_i - 1].price.colorize(:light_cyan)}".gsub("+", " ")
+     
       puts "Sizes Available: #{Shoes.all[input.to_i - 1].sizes_available.colorize(:light_cyan)}"
       save(input)
     end
@@ -196,7 +203,7 @@ class CommandLineInterface
           puts "Colorway: #{shoe.colorway.colorize(:light_cyan)}"
           puts "Condition: #{shoe.condition.colorize(:light_cyan)}"
           puts "Year: #{shoe.year.colorize(:light_cyan)}"
-          puts "Price: #{shoe.price.colorize(:light_cyan)}"
+          puts "Price: #{shoe.price.colorize(:light_cyan)}".gsub("+", " ")
           puts "Sizes Available: #{shoe.sizes_available.colorize(:light_cyan)}"
           puts "Web Link: #{shoe.shoe_href.colorize(:light_cyan)}"
           puts ''

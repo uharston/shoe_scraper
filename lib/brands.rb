@@ -5,8 +5,10 @@ class Brands
     
     @@all = []
 
+    # extend Klass 
+
     def initialize(hash)
-       hash.each_pair do |key, value|
+       hash.each do |key, value|
         send("#{key}=", value)
        end 
        @@all << self 
@@ -17,13 +19,6 @@ class Brands
         self.new(hash)
       end 
     end 
-
-    # def self.create_jordan_editions(array)
-      
-    # end 
-    # # Brands[0].editions #=> [Brands]
-
-    # @editions = []
 
     def self.all 
         @@all 

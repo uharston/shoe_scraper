@@ -6,12 +6,11 @@ class Shoes
     @@all = []
 
     def initialize(hash)
-        #@all = []
+    
 
-        hash.each_pair do |key, value|
+        hash.each do |key, value|
          send("#{key}=", value)
         end 
-        #@all << self 
         @@all.unshift(self)
         
      end 
@@ -24,10 +23,11 @@ class Shoes
       end 
 
     def add_attributes(hash)
-        hash.each_pair do |key, value|
+        binding.pry 
+        hash.each do |key, value|
             send("#{key}=", value)
-           end
-        end 
+        end
+    end 
 
     def self.all
         @@all 
