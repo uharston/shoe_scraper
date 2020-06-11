@@ -1,4 +1,4 @@
-class Jordan_Edition
+class Jordan_Edition # Super 
 
     attr_accessor :name, :href, :shoe_collection 
 

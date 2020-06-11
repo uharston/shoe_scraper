@@ -6,20 +6,6 @@ require 'nokogiri'
 
 class IndexPDX_Scraper
 
-    # #scrape the list of brands => array of hashes - WORKS 
-    # def self.brand_list(index_url)
-       
-    #      doc = Nokogiri::HTML(open(index_url))
-    #     
-    #     doc.css(".BlockContent .SubCategoryList li").map do |brand|
-    #         hash = {}
-           
-    #         hash[:brand_name] = brand.css("a").first.text
-    #         hash[:brand_href] = index_url.gsub("/adidas/", brand.css("a").first['href'])
-    #        hash
-         
-    #     end
-    # end 
 
     def self.brand_list(index_url)
        doc = Nokogiri::HTML(open(index_url))
@@ -29,19 +15,24 @@ class IndexPDX_Scraper
         hash[:brand_href] = index_url.gsub("/adidas/", brand.css("a").first['href'])
         unless hash[:brand_name].include?("Jason Markk")
         end
+        binding.pry 
         hash
     end
 end 
 
-# def col 
-#     [11,12,13,14].map do |b|
-#         hash={}
-#         hash[:name] = b  
-#         unless b == 11
-#         end 
-#         hash 
-#     end
-# end 
+def self.brand_list(index_url)
+     array = []
+    doc = Nokogiri::HTML(open(index_url))
+    doc.css(".BlockContent .SubCategoryList li").each do |brand|
+
+     hash = {}
+     
+     hash[:brand_name] = brand.css("a").first.text
+     hash[:brand_href] = index_url.gsub("/adidas/", brand.css("a").first['href'])
+     array << hash unless hash[:brand_name].include?("Jason Markk")
+ end
+ array 
+end 
 
 
     def self.scrape_jordans_index_page(index_url)
@@ -85,6 +76,22 @@ end
 
 end 
 
+
+
+    # #scrape the list of brands => array of hashes - WORKS 
+    # def self.brand_list(index_url)
+       
+    #      doc = Nokogiri::HTML(open(index_url))
+    #     
+    #     doc.css(".BlockContent .SubCategoryList li").map do |brand|
+    #         hash = {}
+           
+    #         hash[:brand_name] = brand.css("a").first.text
+    #         hash[:brand_href] = index_url.gsub("/adidas/", brand.css("a").first['href'])
+    #        hash
+         
+    #     end
+    # end 
 
 
 
