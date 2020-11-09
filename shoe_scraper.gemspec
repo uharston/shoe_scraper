@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     s.license       = 'MIT'
     s.required_ruby_version = '>= 2.5.0'
 
-    s.add_dependency "rake", "~> 12.0"
+    s.add_dependency "rake", ">= 12", "< 14"
     s.add_dependency 'nokogiri', '1.10'
     s.add_dependency 'colorize', '>= 0.8.1'
   end
