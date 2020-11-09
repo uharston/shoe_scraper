@@ -10,7 +10,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    rake (12.3.2)
+    rake (13.0.1)
 
 PLATFORMS
   ruby
@@ -19,7 +19,7 @@ DEPENDENCIES
   colorize
   nokogiri (= 1.10)
   pry
-  rake (~> 12.0)
+  rake (>= 12.3.3)
 
 BUNDLED WITH
    2.1.4
