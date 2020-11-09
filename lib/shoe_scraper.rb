@@ -1,5 +1,11 @@
 # require 'rainbow/ext/string'
-class CommandLineInterface
+require_relative './super'
+require_relative './brand'
+require_relative './scraper'
+require_relative './shoe'
+require_relative './Jordan_Edition'
+
+class ShoeScraper
 
   BASE_PATH = "https://www.indexpdx.com/adidas/"
 
