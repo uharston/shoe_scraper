@@ -18,6 +18,18 @@ Or install it yourself as:
 
     $ gem install shoe_scraper
 
+## Dependencies
+
+Please note the following dependencies are needed in order for ShoeScraper to work properly. 
+
+    ```ruby
+    'colorize', '>= 0.8.1'
+
+    'nokogiri', '>= 1.10.8'
+
+    'rake', '>= 12.0'
+    ```
+
 ## Usage
 
 Open up a session of irb 
