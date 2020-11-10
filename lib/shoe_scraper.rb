@@ -12,31 +12,38 @@ class ShoeScraper
   @@saved = []
   
   def run
-    first_selection 
+    first_message
   end
   
-  def first_selection 
+  def first_message
     # a = AsciiArt.new("https://www.indexpdx.com/content/images/logo.jpeg")
     # print "#{a.to_ascii_art(width: 50)}"
     puts ''
     puts "Welcome to The Sneaker Finder! Are you ready to find your next pair of kicks?".colorize(:green)
     puts ''
-    puts "Type yes or any other key to exit"
-    
-      input = gets.chomp.downcase
-      if input == 'y'
-        # Saved_Shoe.new 
-        puts ''
-        puts "Great!! Let's get you started with our list of brands".colorize(:green)
-        puts ''
-        scrape_brand 
-      else 
-        puts "Goodbye!".colorize(:green)
-      end 
+    puts "YES or EXIT ?"
+    first_selection('first_message')
+  end 
+
+  def first_selection(selection)
+    if selection == 'wrong_input'
+      puts 'That is not a selection...'
     end
+    input = gets.chomp.downcase
+    if input == 'y' || input == 'yes'
+      # Saved_Shoe.new 
+      puts ''
+      puts "Great!! Let's get you started with our list of brands".colorize(:green)
+      puts ''
+      scrape_brand 
+    elsif input == 'e' || input == 'exit'
+      puts "Goodbye!".colorize(:green)
+    else 
+      first_selection('wrong_input')
+    end
+  end
     
     def scrape_brand  
-  
       Brand.create_from_collection(IndexPDX_Scraper.brand_list(BASE_PATH)) 
       display_brand 
     end
@@ -53,25 +60,25 @@ class ShoeScraper
       puts "Enter a number..."
       input = gets.chomp
       
-      if !input.to_i.between?(1, Brand.all.size) #1.Repeat select_brand function if input an index in the length of Brand.all
+      if !input.to_i.between?(1, Brand.all.size) #1.Repeat select_brand function if input is an index in the length of Brand.all
         puts ""
         puts "That is not a valid option."
         puts ""
         select_brand
       else 
-      href = Brand.all[input.to_i - 1].brand_href 
-      if input == '1' #1.If they are Jordans, check if they have been scraped before 
-        if Brand.all[input.to_i - 1].editions == nil
-          scrape_jordan_editions(href, input)
+        href = Brand.all[input.to_i - 1].brand_href 
+        if input == '1' #1.If they are Jordans, check if they have been scraped before 
+          if Brand.all[input.to_i - 1].editions == nil
+            scrape_jordan_editions(href, input)
+          else
+            display_jordan_editions
+          end
+        elsif Brand.all[input.to_i - 1].shoe_collection == nil #1.If they are other shoes, check if they have been scraped before 
+          scrape_shoe_collection(href, input)
         else
-          display_jordan_editions
-        end
-      elsif Brand.all[input.to_i - 1].shoe_collection == nil #1.If they are other shoes, check if they have been scraped before 
-        scrape_shoe_collection(href, input)
-      else
-        display_shoe_collection(Brand.all[input.to_i - 1].shoe_collection)
+          display_shoe_collection(Brand.all[input.to_i - 1].shoe_collection)
+        end 
       end 
-    end 
     end
     
     #---------------------------------------------------------------------------
