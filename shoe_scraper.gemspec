@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |s|
     s.name        = 'shoe_scraper'
-    s.version     = '0.0.7'
+    s.version     = '0.0.8'
     s.date        = '2020-11-09'
     s.summary     = "A sneaker finder gem"
     s.description = "A gem that scrapes available sneaker inventory from the indexpdx.com website for sneaker collectors."
