@@ -91,12 +91,16 @@ class ShoeScraper
       end 
 
     def display_shoe_collection(brand)
+
       puts ''
       brand.each.with_index(1) do |shoe_obj, index|
         puts "#{index}. Model: #{shoe_obj.shoe_name.colorize(:cyan)}" + " Price: #{shoe_obj.price.colorize(:cyan)}".gsub("+", " ")
         puts ""
       end
-      select_shoe_collection
+      puts "Gotta love some fresh kicks!! Pick a shoe and I can show you more info.".colorize(:green) 
+      puts ""
+      puts "Type a number or 'b' for back"
+      select_shoe_collection(brand)
     end 
 
     def scrape_edition_collection(href, input)
@@ -106,18 +110,22 @@ class ShoeScraper
       display_shoe_collection(Brand.all[0].editions[input.to_i - 1].shoe_collection)
     end
     
-    def select_shoe_collection 
-      puts "Gotta love some fresh kicks!! Pick a shoe and I can show you more info.".colorize(:green) 
-      puts ""
-      puts "Type a number or 'b' for back"
+    def select_shoe_collection(brand, bad_input = false)
+      # BAD INPUT CONDITION
+      if bad_input 
+        puts 'That is not a selection...'
+      end
+
       input = gets.chomp.downcase
      
-      if input == "b"
+      if input == "b" || input == 'back'
         display_brand 
-      else
+      elsif input.to_i.between?(1, brand.size)
         puts "Good Choice!".colorize(:green)
         puts ''
         scrape_shoe(input)
+      else 
+        select_shoe_collection(brand, true)
       end 
     end
     
@@ -174,35 +182,50 @@ class ShoeScraper
       save(input)
     end
     
-    def save(input)
-      puts ''
-      puts "Would you like to save this shoe?".colorize(:yellow)
+    def save(input, bad_input = false)
+      if !bad_input
+        puts ''
+        puts "Would you like to save this shoe?".colorize(:yellow)
+        puts '' 
+        puts 'YES or NO'
+      else 
+        puts 'That is not a selection...'
+      end
       choice = gets.chomp.downcase
-      if choice == 'y'
+      if choice == 'y' || choice == 'yes'
         @@saved << Shoe.all[input.to_i - 1]
         puts ''
         puts "SHOE SAVED!!!!".colorize(:yellow)
         puts ''
         go_back
+      elsif choice == 'n' || choice == 'no'
+        go_back 
       else
-        go_back
+        save(input, true)
       end 
     end 
     
-    def go_back 
+    def go_back(bad_input = false)
+      if !bad_input 
         puts ''
         puts "Would you like to check out more? Type yes, cart, or exit".colorize(:green)
         puts ''
-        input = gets.chomp.downcase 
-      if input == 'y' 
+      else 
+        puts 'That is not a selection...'
+      end
+      
+      input = gets.chomp.downcase 
+      if input == 'y' || input == 'yes'
         puts ''
         display_brand 
-      elsif input == 'c' 
+      elsif input == 'c' || input == 'cart'
         view_saved
-      elsif input == 'e' 
+      elsif input == 'e' || input == 'exit'
         puts ''
         puts 'Goodbye!!'.colorize(:green)
         puts ''
+      else 
+        go_back(true)
       end
     end 
 
