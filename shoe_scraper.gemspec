@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
     s.required_ruby_version = '>= 2.5.0'
 
     s.add_dependency "rake", "~> 12.0"
-    s.add_dependency 'nokogiri', '1.10.8'
+    s.add_dependency 'nokogiri', '1.12.5'
     s.add_dependency 'colorize', '>= 0.8.1'
   end
